@@ -22,3 +22,8 @@ std::vector<std::vector<long double>>  Vmath::dot(std::vector<std::vector<long d
 	}
 	return pr;
 }
+
+/*void Vmath::add(std::vector<std::vector<long double>> &Z1,std::vector<long double> &b){
+	int size = Z1.size();
+	
+}*/
