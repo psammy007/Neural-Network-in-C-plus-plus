@@ -1,10 +1,10 @@
 class Sigmoid{
 	public:
-	static long double sigmoid(long double s);
-	static std::vector<long double> sigmoid(std::vector<long double> s);
-	static std::vector<std::vector<long double>> sigmoid(std::vector<std::vector<long double>> s);
+	static void sigmoid(long double *s);
+	static void sigmoid(std::vector<long double> &s);
+	static void sigmoid(std::vector<std::vector<long double>> &s);
 	
-	static long double sigmoidDerivative(long double s);
-	static std::vector<long double> sigmoidDerivative(std::vector<long double> s);
-	static std::vector<std::vector<long double>> sigmoidDerivative(std::vector<std::vector<long double>> s);
+	static void sigmoidDerivative(long double *s);
+	static void sigmoidDerivative(std::vector<long double> &s);
+	static void sigmoidDerivative(std::vector<std::vector<long double>> &s);
 };
