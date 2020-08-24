@@ -1,16 +1,9 @@
 #include<iostream>
 #include<vector>
 #include<string>
-//#include "loss.h"
-//#include "vmath.h"
 #include "dataset.h"
-//#include "sigmoid.h"
-//#include "softmax.h"
-//#include "normalise.h"
-//#include <graphics.h> 
 #include "initializeParameters.h"
 #include "forwardPropagation.h"
-//#include "tanh.h"
 #include<iomanip>
 #include "computeCast.h"
 #include "backwardPropagation.h"
@@ -34,8 +27,10 @@ int main(int argc, char *argv[]){
        			{-0.01793436, -0.00841747},
        			{ 0.00502881, -0.01245288}},
        			{{-0.01057952, -0.00909008,  0.00551454,  0.02292208}}},gradients,cache,result;
-		sscanf(argv[1],"%d",&noOfIteration);
-		alpha = stod(argv[2]);
+       	if(argc==3){
+			sscanf(argv[1],"%d",&noOfIteration);
+			alpha = stod(argv[2]);
+		}
 		Xdata = Data::loadX();
 		label = Data::loadY();
 		//InitializeParameter::initialize_parameters(layers,parameters);
