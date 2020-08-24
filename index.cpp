@@ -1,13 +1,13 @@
-#include<iostream>
-#include<vector>
 #include<string>
+#include<vector>
+#include<iomanip>
+#include<iostream>
 #include "dataset.h"
+#include "computeCast.h"
+#include "updateParameter.h"
 #include "initializeParameters.h"
 #include "forwardPropagation.h"
-#include<iomanip>
-#include "computeCast.h"
 #include "backwardPropagation.h"
-#include "updateParameter.h"
 #define W  15
 
 using namespace std;
@@ -31,6 +31,8 @@ int main(int argc, char *argv[]){
 			sscanf(argv[1],"%d",&noOfIteration);
 			alpha = stod(argv[2]);
 		}
+		cout<<left<<setw(20)<<"Learning rate"<<right<<setw(5)<<":"<<alpha<<endl;
+		cout<<left<<setw(20)<<"No of iterations"<<right<<setw(5)<<":"<<noOfIteration<<endl;
 		Xdata = Data::loadX();
 		label = Data::loadY();
 		//InitializeParameter::initialize_parameters(layers,parameters);
@@ -68,6 +70,7 @@ int main(int argc, char *argv[]){
 		for(auto x:bias[1]){
 			cout<<right<<setw(W)<<x;
 		}
+		cout<<endl;
 		ForwardPropagation::forwardpropagate(result,Xdata,parameters,bias);
 		yhat = result.back();
 		std::vector<int> pred;
