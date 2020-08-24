@@ -12,7 +12,7 @@ void InitializeParameter::initialize_parameters(std::vector<int> l, std::vector<
 		for(int j = 0; j < l[i]; j++){
 			std::vector<long double> t;
 			for(int k = 0; k < l[i-1]; k++){
-				t.push_back((float(rand())/float((RAND_MAX)) * 0.01));
+				t.push_back((float(rand())* 0.01));
 			}
 			s.push_back(t);
 		}
@@ -26,7 +26,7 @@ void InitializeParameter::initialize_bias(std::vector<int> l,std::vector<std::ve
 	for(int i = 1; i < size; i++){
 		std::vector<long double> s;
 		for(int j = 0; j < l[i]; j++)
-			s.push_back((float(rand())/float((RAND_MAX)) * 0.01));
+			s.push_back((float(rand()) ));
 		v.push_back(s);
 	}
 }
