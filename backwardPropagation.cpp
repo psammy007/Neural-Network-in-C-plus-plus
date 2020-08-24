@@ -1,5 +1,4 @@
 #include<vector>
-#include<iostream>
 #include "vmath.h"
 #include "backwardPropagation.h"
 
@@ -12,13 +11,6 @@ void BackwardPropagation::backpropagate(std::vector<std::vector<std::vector<long
 		temp.push_back(A2[0][i]-Y[i]);
 	dz2.push_back(temp);
 	temp.clear();
-	/*std::cout<<"dz2"<<std::endl;
-	for(auto x:dz2){
-		for(auto y:x)
-			std::cout<<y<<" ";
-		std::cout<<std::endl;
-	}
-	std::cout<<std::endl;*/
 	Vmath::transpose(A1,A1T);
 	dw2 = Vmath::dot(dz2,A1T);
 	int r = dw2.size(), c = dw2[0].size();
@@ -26,21 +18,7 @@ void BackwardPropagation::backpropagate(std::vector<std::vector<std::vector<long
 		for(int j = 0; j < c; j++)
 			dw2[i][j] /= m;
 	}
-	/*std::cout<<"dw2"<<std::endl;
-	for(auto x:dw2){
-		for(auto y:x)
-			std::cout<<y<<" ";
-		std::cout<<std::endl;
-	}*/
 	Vmath::rowSum(dz2,db2,m);
-	/*std::cout<<"db2"<<std::endl;
-	for(auto x:db2){
-		for(auto y:x)
-			std::cout<<y<<" ";
-		std::cout<<std::endl;
-	}
-	std::cout<<std::endl;
-	std::cout<<std::endl;*/
 	Vmath::transpose(w2,w2t);
 	temp1 = Vmath::dot(w2t,dz2);
 	r = A1.size();
@@ -54,13 +32,6 @@ void BackwardPropagation::backpropagate(std::vector<std::vector<std::vector<long
 		temp2.push_back(f);
 	}
 	Vmath::multiply(temp1,temp2,dz1);
-	/*std::cout<<"dz1"<<std::endl;
-	for(auto x:dz1){
-		for(auto y:x)
-			std::cout<<y<<" ";
-		std::cout<<std::endl;
-	}
-	std::cout<<std::endl;*/
 	Vmath::transpose(X,XT);
 	dw1 = Vmath::dot(dz1,XT);
 	r = dw1.size();
@@ -69,21 +40,7 @@ void BackwardPropagation::backpropagate(std::vector<std::vector<std::vector<long
 		for(int j = 0; j < c; j++)
 			dw1[i][j] /= m;
 	}
-	/*std::cout<<"dw1"<<std::endl;
-	for(auto x:dw1){
-		for(auto y:x)
-			std::cout<<y<<" ";
-		std::cout<<std::endl;
-	}
-	std::cout<<std::endl;*/
 	Vmath::rowSum(dz1,db1,m);
-	/*std::cout<<"db1"<<std::endl;
-	for(auto x:db1){
-		for(auto y:x)
-			std::cout<<y<<" ";
-		std::cout<<std::endl;
-	}
-	std::cout<<std::endl;*/
 	grad.push_back(dw1);
 	grad.push_back(db1);
 	grad.push_back(dw2);
